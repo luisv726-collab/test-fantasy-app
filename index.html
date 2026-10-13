@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fantasy Football League Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <h1>Fantasy Football Dashboard</h1>
+      <p class="subtitle">Standings, scoring, consistency, and matchup tracking</p>
+    </div>
+    <div class="header-controls">
+      <label for="season-select">Season</label>
+      <select id="season-select"></select>
+      <button id="reload-sample" class="secondary">Reload sample data</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="summary-cards" class="card-grid" aria-label="League summary"></section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Standings</h2>
+        <p class="muted">Click a column header to sort. Consistency is measured by the standard deviation of weekly scores; lower is more consistent.</p>
+      </div>
+      <div class="table-wrap">
+        <table id="standings-table">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Weekly Score Trends</h2>
+        <p class="muted">Each line is a team’s weekly total. Use the legend to focus on individual teams.</p>
+      </div>
+      <div id="trend-chart" class="chart"></div>
+      <div id="trend-legend" class="legend"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Recent Matchups</h2>
+        <p class="muted">Latest completed week for every matchup.</p>
+      </div>
+      <div id="matchups" class="matchup-grid"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Import ESPN Data</h2>
+        <p class="muted">Paste an exported JSON file or use the browser console helper. Private ESPN leagues require authenticated cookies, so production imports should run through a small local server or proxy.</p>
+      </div>
+      <div class="import-row">
+        <input id="json-file" type="file" accept=".json" />
+        <button id="load-json" class="primary">Load JSON</button>
+      </div>
+      <pre id="import-status" class="status"></pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>Sample data is included for demonstration. Replace it with your ESPN league export or API response when ready.</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
